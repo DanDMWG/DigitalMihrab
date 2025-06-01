@@ -2,8 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = "https://your-project.supabase.co";
-const supabaseAnonKey = "your-anon-key";
+const supabaseUrl = "https://pqqfpnxuuuwvuivmbyfg.supabase.co";
+const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxcWZwbnh1dXV3dnVpdm1ieWZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg3NzQzMDUsImV4cCI6MjA2NDM1MDMwNX0.Td_sTbC2CTLsmFc7ZlIl7UMFGSNJxR9XRc-6kfNQp1I";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function DigitalMihrab() {
