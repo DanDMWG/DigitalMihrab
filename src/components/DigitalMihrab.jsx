@@ -151,10 +151,7 @@ export default function DigitalMihrab() {
           exit={{ scale: 0.5, opacity: 0 }}
           transition={{ duration: 1.5 }}
         >
-          <div
-            className={`absolute w-48 h-48 rounded-full ${categoryColors[category]} animate-ping`}
-          ></div>
-
+          <div className={`absolute w-48 h-48 rounded-full ${categoryColors[category]} animate-ping`}></div>
           <div className="w-32 h-32 rounded-full bg-green-700 shadow-lg flex items-center justify-center text-black text-sm font-semibold">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
