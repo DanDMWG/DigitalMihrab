@@ -106,9 +106,7 @@ export default function DigitalMihrab() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-900 via-white to-black text-black flex flex-col items-center justify-center p-6 relative">
       <div className="relative z-10 w-full flex flex-col items-center">
-        <h1 className="text-3xl md:text-5xl font-serif mb-4 text-center">
-          The Digital Mihrab
-        </h1>
+        $1<span className="text-yellow-500">$2</span>$3
         <p className="text-center max-w-xl mb-8 text-gray-700">
           A sacred, silent space for anonymous intentions, prayers, and reflections.
         </p>
