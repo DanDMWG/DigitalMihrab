@@ -104,7 +104,9 @@ export default function DigitalMihrab() {
   const dailyQuote = dailyQuotes[dayOfYear % dailyQuotes.length];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-900 via-white to-black text-black flex flex-col items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-b from-green-900 via-white to-black text-black flex flex-col items-center justify-center p-6 relative">
+      <img src="/pngtree-luxury-gold-mosque-door-frame-vector-png-image_6248436.png" alt="mihrab frame" className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] max-w-md pointer-events-none opacity-80 z-0" />
+      <div className="relative z-10 w-full flex flex-col items-center">
       <h1 className="text-3xl md:text-5xl font-serif mb-4 text-center">
         The Digital Mihrab
       </h1>
@@ -195,6 +197,7 @@ export default function DigitalMihrab() {
         <p>{dailyQuote[language]}</p>
         <p className="text-xs text-black">— Surah {dailyQuote.key}</p>
       </div>
-    </div>
-  );
+          </div>
+$1
+    );
 }
