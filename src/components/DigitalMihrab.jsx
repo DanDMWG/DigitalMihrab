@@ -149,12 +149,7 @@ export default function DigitalMihrab() {
           <div
             className={`w-20 h-20 rounded-full bg-green-700 shadow-lg flex items-center justify-center text-black text-sm font-semibold`}
           >
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: 'easeOut' }}
-              className="text-black text-center px-2"
-            >
+            <motion.span$1className="text-black text-center px-2 !text-black"$2>
               🌙 Your prayer has been released
             </motion.span>
           </div>
