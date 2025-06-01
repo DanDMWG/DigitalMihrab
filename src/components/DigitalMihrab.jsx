@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { supabase } from "../lib/supabaseClient";
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function DigitalMihrab() {
   const [submitted, setSubmitted] = useState(false);
@@ -44,6 +48,39 @@ export default function DigitalMihrab() {
       ms: "Sesungguhnya dengan mengingati Allah hati menjadi tenteram",
       id: "Sesungguhnya dengan mengingat Allah hati menjadi tenang",
       bn: "আল্লাহর স্মরণেই অন্তরসমূহ প্রশান্তি লাভ করে",
+    },
+    {
+      key: "2:286",
+      en: "Allah does not burden a soul beyond that it can bear.",
+      ar: "لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا",
+      fa: "خدا هیچ کس را جز به اندازه توانش تکلیف نمی‌کند",
+      tr: "Allah, hiç kimseye gücünün yeteceğinden fazlasını yüklemez.",
+      ur: "الله کسی جان پر اس کی طاقت سے زیادہ بوجھ نہیں ڈالتا",
+      ms: "Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya",
+      id: "Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya",
+      bn: "আল্লাহ কাউকে তার সাধ্যাতীত ভার দেন না।",
+    },
+    {
+      key: "94:6",
+      en: "Indeed, with hardship [will be] ease.",
+      ar: "إِنَّ مَعَ الْعُسْرِ يُسْرًا",
+      fa: "همانا با سختی آسانی است",
+      tr: "Şüphesiz zorlukla beraber bir kolaylık vardır.",
+      ur: "بے شک دشواری کے ساتھ آسانی ہے",
+      ms: "Sesungguhnya sesudah kesulitan ada kemudahan",
+      id: "Sesungguhnya sesudah kesulitan ada kemudahan",
+      bn: "নিশ্চয়ই কষ্টের সাথে স্বস্তি রয়েছে।",
+    },
+    {
+      key: "3:139",
+      en: "So do not weaken and do not grieve, and you will be superior if you are [true] believers.",
+      ar: "فَلَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنتُمُ الْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ",
+      fa: "پس سست نشوید و غمگین نگردید که اگر مؤمن باشید، شما برترید",
+      tr: "Gevşemeyin, üzülmeyin! Eğer mümin iseniz, üstün olan sizsiniz.",
+      ur: "پس نہ کمزور ہو اور نہ غم کرو، تم ہی غالب آؤ گے اگر تم مؤمن ہو",
+      ms: "Maka janganlah kamu menjadi lemah dan janganlah bersedih hati, padahal kamulah orang-orang yang paling tinggi (darjatnya) jika kamu orang yang beriman",
+      id: "Janganlah kamu bersikap lemah, dan janganlah kamu bersedih hati, padahal kamulah orang-orang yang paling tinggi (derajatnya), jika kamu orang beriman",
+      bn: "তোমরা হতোদ্যম হয়ো না এবং দুঃখ করো না। যদি তোমরা মুমিন হও, তবে তোমরাই শ্রেষ্ঠ।",
     }
   ];
 
@@ -99,15 +136,29 @@ export default function DigitalMihrab() {
         </form>
       ) : (
         <motion.div
-          className={`w-48 h-48 rounded-full backdrop-blur-sm flex items-center justify-center text-lg text-white text-center \${categoryColors[category]}`}
+          className={`relative w-48 h-48 flex items-center justify-center`}
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1.1, opacity: 1 }}
           exit={{ scale: 0.5, opacity: 0 }}
           transition={{ duration: 1.5 }}
         >
-          🌙 Your prayer has been released.
+          <div
+            className={`absolute w-48 h-48 rounded-full ${categoryColors[category]} animate-ping`}
+          ></div>
+
+          <div
+            className={`w-20 h-20 rounded-full bg-green-700 shadow-lg flex items-center justify-center text-black text-sm font-semibold`}
+          >
+            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              🌙 Your prayer has been released
+            </motion.span>
+          </div>
         </motion.div>
-      )}
+
+          <a href="#" className="mt-4 underline text-sm text-green-800 hover:text-green-600 transition">
+            View prayers
+          </a>
+        )}
 
       <div className="mt-10 max-w-xl text-center text-sm text-green-900 italic space-y-2">
         <select
