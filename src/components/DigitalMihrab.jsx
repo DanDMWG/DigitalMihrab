@@ -99,17 +99,24 @@ export default function DigitalMihrab() {
   const dailyQuote = dailyQuotes[dayOfYear % dailyQuotes.length];
 
   const handleDonate = async () => {
-    const response = await fetch("/api/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ amount: 500 }), // $5 donation
-    });
+    try {
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ amount: 500 }),
+      });
 
-    const data = await response.json();
-    if (data.url) {
-      window.location.href = data.url;
+      const data = await response.json();
+
+      if (response.ok && data.url) {
+        window.location.href = data.url;
+      } else {
+        console.error("Checkout session error:", data.error);
+      }
+    } catch (error) {
+      console.error("Fetch failed:", error);
     }
   };
 
