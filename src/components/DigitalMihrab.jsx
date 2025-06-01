@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
 
@@ -11,6 +11,8 @@ export default function DigitalMihrab() {
   const [category, setCategory] = useState("gratitude");
   const [text, setText] = useState("");
   const [language, setLanguage] = useState("en");
+  const [showPrayers, setShowPrayers] = useState(false);
+  const [prayers, setPrayers] = useState([]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -22,6 +24,16 @@ export default function DigitalMihrab() {
     setSubmitted(true);
     setText("");
     setTimeout(() => setSubmitted(false), 4000);
+  }
+
+  async function handleViewPrayers() {
+    const { data, error } = await supabase.from("submissions").select("text, category").order("id", { ascending: false });
+    if (error) {
+      console.error("Fetch error:", error.message);
+    } else {
+      setPrayers(data);
+      setShowPrayers(true);
+    }
   }
 
   const categoryColors = {
@@ -161,10 +173,27 @@ export default function DigitalMihrab() {
             </div>
           </motion.div>
 
-          <a href="#" className="mt-4 underline text-sm text-green-800 hover:text-green-600 transition">
+          <button
+            onClick={handleViewPrayers}
+            className="mt-4 underline text-sm text-green-800 hover:text-green-600 transition"
+          >
             View prayers
-          </a>
+          </button>
         </>
+      )}
+
+      {showPrayers && (
+        <div className="mt-6 w-full max-w-md bg-white p-4 rounded-lg shadow">
+          <h2 className="text-lg font-semibold mb-2 text-green-800">Whispers in the Mihrab</h2>
+          <ul className="space-y-2 max-h-64 overflow-y-auto">
+            {prayers.map((p, i) => (
+              <li key={i} className="bg-green-50 border border-green-200 p-2 rounded">
+                <p className="text-sm italic">{p.text}</p>
+                <p className="text-xs text-right text-gray-500">— {p.category}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
 
       <div className="mt-10 max-w-xl text-center text-sm text-black italic space-y-2">
