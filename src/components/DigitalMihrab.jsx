@@ -196,7 +196,6 @@ export default function DigitalMihrab() {
         <p>{dailyQuote[language]}</p>
         <p className="text-xs text-black">— Surah {dailyQuote.key}</p>
       </div>
-          </div>
       </div>
     </div>
   );
