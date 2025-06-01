@@ -98,6 +98,21 @@ export default function DigitalMihrab() {
   const dayOfYear = Math.floor(diff / oneDay);
   const dailyQuote = dailyQuotes[dayOfYear % dailyQuotes.length];
 
+  const handleDonate = async () => {
+    const response = await fetch("/api/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ amount: 500 }), // $5 donation
+    });
+
+    const data = await response.json();
+    if (data.url) {
+      window.location.href = data.url;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-900 via-white to-black text-black flex flex-col items-center justify-center p-6 relative">
       <h1 className="text-3xl md:text-5xl font-serif mb-4 text-center">
@@ -106,6 +121,13 @@ export default function DigitalMihrab() {
       <p className="text-center max-w-xl mb-8 text-gray-700">
         A sacred, silent space for anonymous intentions, prayers, and reflections.
       </p>
+
+      <button
+        onClick={handleDonate}
+        className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mb-6 shadow"
+      >
+        Donate Zakat
+      </button>
 
       {!submitted ? (
         <form
