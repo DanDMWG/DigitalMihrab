@@ -2,8 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = "https://pqqfpnxuuuwvuivmbyfg.supabase.co";
-const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxcWZwbnh1dXV3dnVpdm1ieWZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg3NzQzMDUsImV4cCI6MjA2NDM1MDMwNX0.Td_sTbC2CTLsmFc7ZlIl7UMFGSNJxR9XRc-6kfNQp1I";
+const supabaseUrl = "https://your-project.supabase.co";
+const supabaseAnonKey = "your-anon-key";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function DigitalMihrab() {
@@ -148,7 +148,7 @@ export default function DigitalMihrab() {
             ></div>
 
             <div
-              className={`w-20 h-20 rounded-full bg-green-700 shadow-lg flex items-center justify-center text-black text-sm font-semibold`}
+              className={`w-32 h-32 rounded-full bg-green-700 shadow-lg flex items-center justify-center text-black text-sm font-semibold`}
             >
               <motion.span
                 initial={{ opacity: 0, y: 10 }}
@@ -167,7 +167,7 @@ export default function DigitalMihrab() {
         </>
       )}
 
-      <div className="mt-10 max-w-xl text-center text-sm text-green-900 italic space-y-2">
+      <div className="mt-10 max-w-xl text-center text-sm text-black italic space-y-2">
         <select
           className="mb-2 p-2 rounded bg-white text-black border-2 border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
           value={language}
@@ -183,7 +183,7 @@ export default function DigitalMihrab() {
           <option value="bn">Bengali</option>
         </select>
         <p>{dailyQuote[language]}</p>
-        <p className="text-xs text-gray-500">— Surah {dailyQuote.key}</p>
+        <p className="text-xs text-black">— Surah {dailyQuote.key}</p>
       </div>
     </div>
   );
