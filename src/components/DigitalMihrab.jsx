@@ -99,7 +99,7 @@ export default function DigitalMihrab() {
         </form>
       ) : (
         <motion.div
-          className={\`w-48 h-48 rounded-full backdrop-blur-sm flex items-center justify-center text-lg text-white text-center \${categoryColors[category]}\`}
+          className={`w-48 h-48 rounded-full backdrop-blur-sm flex items-center justify-center text-lg text-white text-center \${categoryColors[category]}`}
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1.1, opacity: 1 }}
           exit={{ scale: 0.5, opacity: 0 }}
