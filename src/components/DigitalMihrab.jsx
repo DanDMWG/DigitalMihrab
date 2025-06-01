@@ -105,8 +105,14 @@ export default function DigitalMihrab() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-900 via-white to-black text-black flex flex-col items-center justify-center p-6">
-      <h1 className="text-3xl md:text-5xl font-serif mb-4 text-center">The Digital Mihrab</h1>
-      <p className="text-center max-w-xl mb-8 text-gray-700">
+      <h1 className="text-3xl md:text-5xl font-serif mb-4 text-center">The Digital Mihrab<button
+        onClick={handleViewPrayers}
+        className="mb-4 text-sm underline text-green-800 hover:text-green-600 transition"
+      >
+        View prayers
+      </button>
+
+$1
         A sacred, silent space for anonymous intentions, prayers, and reflections.
       </p>
 
@@ -145,8 +151,20 @@ export default function DigitalMihrab() {
           >
             Send to the Mihrab
           </button>
-        </form>
-      ) : (
+        $1$2
+{showPrayers && (
+  <div className="mt-6 w-full max-w-md bg-white p-4 rounded-lg shadow">
+    <h2 className="text-lg font-semibold mb-2 text-green-800">Whispers in the Mihrab</h2>
+    <ul className="space-y-2 max-h-64 overflow-y-auto">
+      {prayers.map((p, i) => (
+        <li key={i} className="bg-green-50 border border-green-200 p-2 rounded">
+          <p className="text-sm italic">{p.text}</p>
+          <p className="text-xs text-right text-gray-500">— {p.category}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}$2) : (
         <>
           <motion.div
             className={`relative w-48 h-48 flex items-center justify-center`}
@@ -173,28 +191,11 @@ export default function DigitalMihrab() {
             </div>
           </motion.div>
 
-          <button
-            onClick={handleViewPrayers}
-            className="mt-4 underline text-sm text-green-800 hover:text-green-600 transition"
-          >
-            View prayers
-          </button>
+          
         </>
       )}
 
-      {showPrayers && (
-        <div className="mt-6 w-full max-w-md bg-white p-4 rounded-lg shadow">
-          <h2 className="text-lg font-semibold mb-2 text-green-800">Whispers in the Mihrab</h2>
-          <ul className="space-y-2 max-h-64 overflow-y-auto">
-            {prayers.map((p, i) => (
-              <li key={i} className="bg-green-50 border border-green-200 p-2 rounded">
-                <p className="text-sm italic">{p.text}</p>
-                <p className="text-xs text-right text-gray-500">— {p.category}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      
 
       <div className="mt-10 max-w-xl text-center text-sm text-black italic space-y-2">
         <select
