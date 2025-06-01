@@ -2,8 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = "https://pqqfpnxuuuwvuivmbyfg.supabase.co";
+const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxcWZwbnh1dXV3dnVpdm1ieWZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg3NzQzMDUsImV4cCI6MjA2NDM1MDMwNX0.Td_sTbC2CTLsmFc7ZlIl7UMFGSNJxR9XRc-6kfNQp1I";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function DigitalMihrab() {
@@ -135,30 +135,37 @@ export default function DigitalMihrab() {
           </button>
         </form>
       ) : (
-        <motion.div
-          className={`relative w-48 h-48 flex items-center justify-center`}
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1.1, opacity: 1 }}
-          exit={{ scale: 0.5, opacity: 0 }}
-          transition={{ duration: 1.5 }}
-        >
-          <div
-            className={`absolute w-48 h-48 rounded-full ${categoryColors[category]} animate-ping`}
-          ></div>
-
-          <div
-            className={`w-20 h-20 rounded-full bg-green-700 shadow-lg flex items-center justify-center text-black text-sm font-semibold`}
+        <>
+          <motion.div
+            className={`relative w-48 h-48 flex items-center justify-center`}
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1.1, opacity: 1 }}
+            exit={{ scale: 0.5, opacity: 0 }}
+            transition={{ duration: 1.5 }}
           >
-            <motion.span$1className="text-black text-center px-2 !text-black"$2>
-              🌙 Your prayer has been released
-            </motion.span>
-          </div>
-        </motion.div>
+            <div
+              className={`absolute w-48 h-48 rounded-full ${categoryColors[category]} animate-ping`}
+            ></div>
+
+            <div
+              className={`w-20 h-20 rounded-full bg-green-700 shadow-lg flex items-center justify-center text-black text-sm font-semibold`}
+            >
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+                className="text-black text-center px-2"
+              >
+                🌙 Your prayer has been released
+              </motion.span>
+            </div>
+          </motion.div>
 
           <a href="#" className="mt-4 underline text-sm text-green-800 hover:text-green-600 transition">
             View prayers
           </a>
-        )}
+        </>
+      )}
 
       <div className="mt-10 max-w-xl text-center text-sm text-green-900 italic space-y-2">
         <select
