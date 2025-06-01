@@ -105,97 +105,97 @@ export default function DigitalMihrab() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-900 via-white to-black text-black flex flex-col items-center justify-center p-6 relative">
-            <div className="relative z-10 w-full flex flex-col items-center">
-      <h1 className="text-3xl md:text-5xl font-serif mb-4 text-center">
-        The Digital Mihrab
-      </h1>
-      <p className="text-center max-w-xl mb-8 text-gray-700">
-        A sacred, silent space for anonymous intentions, prayers, and reflections.
-      </p>
+      <div className="relative z-10 w-full flex flex-col items-center">
+        <h1 className="text-3xl md:text-5xl font-serif mb-4 text-center">
+          The Digital Mihrab
+        </h1>
+        <p className="text-center max-w-xl mb-8 text-gray-700">
+          A sacred, silent space for anonymous intentions, prayers, and reflections.
+        </p>
 
-      {!submitted ? (
-        <form
-          onSubmit={handleSubmit}
-          className="w-full max-w-md bg-white p-6 rounded-2xl shadow-xl space-y-4"
-        >
-          <textarea
-            className="w-full p-3 rounded-lg bg-white text-black placeholder-gray-600 border-2 border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
-            rows="4"
-            placeholder="What do you want to release into the Mihrab?"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            required
-          />
-          <select
-            className="w-full p-2 rounded bg-white text-black border-2 border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
+        {!submitted ? (
+          <form
+            onSubmit={handleSubmit}
+            className="w-full max-w-md bg-white p-6 rounded-2xl shadow-xl space-y-4"
           >
-            <option value="gratitude">Gratitude</option>
-            <option value="healing">Healing</option>
-            <option value="hope">Hope</option>
-            <option value="grief">Grief</option>
-            <option value="repentance">Repentance</option>
-            <option value="forgiveness">Forgiveness</option>
-            <option value="guidance">Guidance</option>
-            <option value="love">Love</option>
-            <option value="fear">Fear</option>
-            <option value="reflection">Reflection</option>
-          </select>
-          <button
-            type="submit"
-            className="bg-green-700 hover:bg-green-600 transition p-3 w-full rounded-xl shadow"
-          >
-            Send to the Mihrab
-          </button>
-        </form>
-      ) : (
-        <>
-          <motion.div
-            className={`relative w-48 h-48 flex items-center justify-center`}
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1.1, opacity: 1 }}
-            exit={{ scale: 0.5, opacity: 0 }}
-            transition={{ duration: 1.5 }}
-          >
-            <div
-              className={`absolute w-48 h-48 rounded-full ${categoryColors[category]} animate-ping`}
-            ></div>
-
-            <div
-              className={`w-32 h-32 rounded-full bg-green-700 shadow-lg flex items-center justify-center text-black text-sm font-semibold`}
+            <textarea
+              className="w-full p-3 rounded-lg bg-white text-black placeholder-gray-600 border-2 border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+              rows="4"
+              placeholder="What do you want to release into the Mihrab?"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              required
+            />
+            <select
+              className="w-full p-2 rounded bg-white text-black border-2 border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
             >
-              <motion.span
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-                className="text-black text-center px-2"
-              >
-                🌙 Your prayer has been released
-              </motion.span>
-            </div>
-          </motion.div>
-        </>
-      )}
+              <option value="gratitude">Gratitude</option>
+              <option value="healing">Healing</option>
+              <option value="hope">Hope</option>
+              <option value="grief">Grief</option>
+              <option value="repentance">Repentance</option>
+              <option value="forgiveness">Forgiveness</option>
+              <option value="guidance">Guidance</option>
+              <option value="love">Love</option>
+              <option value="fear">Fear</option>
+              <option value="reflection">Reflection</option>
+            </select>
+            <button
+              type="submit"
+              className="bg-green-700 hover:bg-green-600 transition p-3 w-full rounded-xl shadow"
+            >
+              Send to the Mihrab
+            </button>
+          </form>
+        ) : (
+          <>
+            <motion.div
+              className={`relative w-48 h-48 flex items-center justify-center`}
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1.1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ duration: 1.5 }}
+            >
+              <div
+                className={`absolute w-48 h-48 rounded-full ${categoryColors[category]} animate-ping`}
+              ></div>
 
-      <div className="mt-10 max-w-xl text-center text-sm text-black italic space-y-2">
-        <select
-          className="mb-2 p-2 rounded bg-white text-black border-2 border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
-          value={language}
-          onChange={(e) => setLanguage(e.target.value)}
-        >
-          <option value="en">English</option>
-          <option value="ar">Arabic</option>
-          <option value="fa">Persian</option>
-          <option value="tr">Turkish</option>
-          <option value="ur">Urdu</option>
-          <option value="ms">Malay</option>
-          <option value="id">Indonesian</option>
-          <option value="bn">Bengali</option>
-        </select>
-        <p>{dailyQuote[language]}</p>
-        <p className="text-xs text-black">— Surah {dailyQuote.key}</p>
-      </div>
+              <div
+                className={`w-32 h-32 rounded-full bg-green-700 shadow-lg flex items-center justify-center text-black text-sm font-semibold`}
+              >
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1 }}
+                  className="text-black text-center px-2"
+                >
+                  🌙 Your prayer has been released
+                </motion.span>
+              </div>
+            </motion.div>
+          </>
+        )}
+
+        <div className="mt-10 max-w-xl text-center text-sm text-black italic space-y-2">
+          <select
+            className="mb-2 p-2 rounded bg-white text-black border-2 border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+          >
+            <option value="en">English</option>
+            <option value="ar">Arabic</option>
+            <option value="fa">Persian</option>
+            <option value="tr">Turkish</option>
+            <option value="ur">Urdu</option>
+            <option value="ms">Malay</option>
+            <option value="id">Indonesian</option>
+            <option value="bn">Bengali</option>
+          </select>
+          <p>{dailyQuote[language]}</p>
+          <p className="text-xs text-black">— Surah {dailyQuote.key}</p>
+        </div>
       </div>
     </div>
   );
